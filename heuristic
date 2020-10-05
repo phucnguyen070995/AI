@@ -1,0 +1,54 @@
+// hàm main
+State startedState // trạng thái ban đầu
+State  currentState // trạng thái hiện tại
+int arr[] = new int[N]
+loop (i=0---->N-1){
+	a[i]= Radom(1-N)
+}
+ 
+startedState = new State(arr) //có thể tạo ra 2 quân hậu trên 1 hàng
+currentState = startedState // thiết lập trạng thái hiện tại bằng trạng thái ban đầu
+Stack<State> T = {Ø} //danh sách tạm lưu các trạng thái con được tạo ra từ trạng thái đang xét
+while (h (arr) > 0){
+	getNextState (currentState)
+	S.Add (currentState);
+}//end while
+ 
+// hàm chọn trạng thái tiếp theo
+function generateNextState (State currentState  ){
+	int selectendex;
+	Stack<State> T;	 
+	//get the most attacted	 
+	loop (i=0---->N-1){	 
+		if (arr[i].isMostAttacted()){	 
+			selectedIndex= i;			 
+			break;	 
+		} 
+	}//end loop
+	 
+	State tempState= new State (arr);	 
+	int j=0; 
+	Boolean found;
+	//find the best state 
+	while (j<N){
+		// xét các vị trí trên cột mà con hậu đang đứng, kiểm tra hàm h trên mỗi vị trí, min thì lấy		 
+		tempState.arr[selectedIndex]=j		 
+		if (tempState.h()<currentState.h()){	 
+			currentState = tempState;	 
+		}	 
+		j++; 
+	}//end while
+}
+ 
+//hàm chi phí
+function int h(State state){
+	int h=0;
+	for(int i=0; i<N-1;i++)
+		for(int j= i+1; j<N;j++){  
+			if(a[i]==a[j]) h++;
+			if ((state.arr[i]+i)==(state.arr[j]+j)|| (state.arr[j]-i)==(state.arr[i]-j)) {
+				h++;
+			}
+		}
+	return h;
+}
