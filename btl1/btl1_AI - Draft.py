@@ -5,6 +5,7 @@ def searchDFS(n):
     print('Dang su dung giai thuat DFS:')
     start_time = time.time()
     #Tao search tree voi tang i la tim kiem vi tri dat con hau cho hang thu i - 1
+    res = []
     Stack = [[-1, -1]]
     while True:
         if len(Stack) == 1 and Stack[0][-1] == n - 1:
@@ -19,9 +20,9 @@ def searchDFS(n):
             if isNextStateDFS(Stack, nextState):
                 Stack.append(nextState)
             if len(Stack) == n + 1:
-                break
+                res.append(Stack[1:])
     print("--- %s seconds ---" % (time.time() - start_time))
-    return Stack[1:]
+    return res
 
 def isNextStateDFS(Stack, state):
     for i in range(1, len(Stack)):
@@ -32,6 +33,7 @@ def isNextStateDFS(Stack, state):
 def searchBrFS(n):
     print('Dang su dung giai thuat BrFS:')
     start_time = time.time()
+    res = []
     Queue = [[x] for x in range(n)]
     while len(Queue) != 0:
         state = Queue[0]
@@ -40,10 +42,11 @@ def searchBrFS(n):
             if isNextStateBrFS(state, i):
                 state.append(i)
                 if len(state) == n:
-                    print("--- %s seconds ---" % (time.time() - start_time))
-                    return res
+                    res.append(state)
                 else: Queue.append(state)
                 state = state[:-1]
+    print("--- %s seconds ---" % (time.time() - start_time))
+    return res
 
 def isNextStateBrFS(state, n):
     for i in range(len(state)):
@@ -70,6 +73,11 @@ def searchHeuristic(n):
         #trong truong hop vi tri moi la vi tri cu ta se lay random de tao ra trang thai moi
 
         if state[selectRow] == selectCol or selectCol == check_idx[0]:
+            # while True:
+            #     random_idx = random.randrange(n)
+            #     if random_idx != selectCol:
+            #         selectCol = random_idx
+            #         break
             state[random.randrange(n)] = random.randrange(n)
         else:
             check_idx = check_idx[1:] + [selectCol]
@@ -86,6 +94,9 @@ def cal_h(state, row, col):
             h += 1
     return h
 
+
+
+
 def printBanCo(arr):
     for i in range(len(arr)):
         for j in range(arr[i][0]):
@@ -97,11 +108,12 @@ def printBanCo(arr):
 
 if __name__ =="__main__":
     n = int(input('Moi nhap so chieu ban co nxn: '))
-    while n < 4:
-        n = int(input('Moi nhap lai so chieu ban co nxn: '))
-    res = searchDFS(n)
-    printBanCo(res)
     res = searchBrFS(n)
-    printBanCo(res)
+    print(len(res))
     res = searchHeuristic(n)
     printBanCo([[idx] for idx in res])
+    # print(len(res))
+    # for banco in res:
+    #     print('---'*len(banco))
+    #     printBanCo(banco)
+
