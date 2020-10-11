@@ -1,23 +1,48 @@
 import time
 import random
 
+# def searchDFS(n):
+#     print('Dang su dung giai thuat DFS:')
+#     start_time = time.time()
+#     #Tao search tree voi tang i la tim kiem vi tri dat con hau cho hang thu i - 1
+#     Stack = [[-1, -1]]
+#     while True:
+#         if Stack[-1][-1] < n - 1:
+#             Stack[-1] = [Stack[-1][0], Stack[-1][1] + 1]
+#         else:
+#             Stack = Stack[:-1]
+#             continue
+#         if len(Stack) < n + 1:
+#             nextState = [Stack[-1][-1], -1]
+#             if isNextStateDFS(Stack, nextState):
+#                 Stack.append(nextState)
+#             if len(Stack) == n + 1:
+#                 break
+#         print(Stack)
+#         printBanCo(Stack[1:])
+#     print("--- %s seconds ---" % (time.time() - start_time))
+#     return Stack[1:]
+
 def searchDFS(n):
     print('Dang su dung giai thuat DFS:')
     start_time = time.time()
     #Tao search tree voi tang i la tim kiem vi tri dat con hau cho hang thu i - 1
     Stack = [[-1, -1]]
+    new_flag = 0
     while True:
-        if len(Stack) == 1 and Stack[0][-1] == n - 1:
-            break
-        if Stack[-1][-1] < n - 1:
+        if Stack[-1][-1] < n - 1 and Stack[-1][-1] != Stack[-1][0] - 1:
             Stack[-1] = [Stack[-1][0], Stack[-1][1] + 1]
+        elif new_flag == 1:
+            Stack[-1][-1] = 0
+            new_flag = 0
         else:
             Stack = Stack[:-1]
             continue
         if len(Stack) < n + 1:
-            nextState = [Stack[-1][-1], -1]
+            nextState = [Stack[-1][-1], Stack[-1][-1] + 1 if Stack[-1][-1] + 1 <= n - 1 else -1]
             if isNextStateDFS(Stack, nextState):
                 Stack.append(nextState)
+                new_flag = 1
             if len(Stack) == n + 1:
                 break
     print("--- %s seconds ---" % (time.time() - start_time))
@@ -33,7 +58,7 @@ def searchBrFS(n):
     print('Dang su dung giai thuat BrFS:')
     start_time = time.time()
     Queue = [[x] for x in range(n)]
-    while len(Queue) != 0:
+    while True:
         state = Queue[0]
         Queue = Queue[1:]
         for i in range(n):
@@ -86,6 +111,27 @@ def cal_h(state, row, col):
             h += 1
     return h
 
+def handle_over100000(n):
+    start_time = time.time()
+    print('Dang su dung giai thuat Heuristic (Handle duoc N > 100000):')
+    r = n % 12
+    res = list(range(2, n + 1, 2))
+    if r == 3 or r == 9:
+        res = res[1:] + [2]
+        res = res + list(range(5, n + 1, 2)) + [1, 3]
+        print("--- %s seconds ---" % (time.time() - start_time))
+        return res
+    if r == 8:
+        for i in range(3, n + 1, 4):
+            res = res + [i, i - 2]
+    elif r == 2:
+        res = res + [3, 1] + list(range(7, n + 1, 2)) + [5]
+    else:
+        res = res + list(range(1, n + 1, 2))
+    print("--- %s seconds ---" % (time.time() - start_time))
+    return [[idx - 1] for idx in res]
+
+
 def printBanCo(arr):
     for i in range(len(arr)):
         for j in range(arr[i][0]):
@@ -99,9 +145,17 @@ if __name__ =="__main__":
     n = int(input('Moi nhap so chieu ban co nxn: '))
     while n < 4:
         n = int(input('Moi nhap lai so chieu ban co nxn: '))
-    res = searchDFS(n)
+    # for n in range(4, 41):
+    #     print('n = ' + str(n))
+    #     res = searchDFS(n)
+    #     printBanCo(res)
+    # res = searchDFS(n)
+    # printBanCo(res)
+    # res = searchBrFS(n)
+    # printBanCo(res)
+    # res = searchHeuristic(n)
+    # print(res)
+    # printBanCo([[idx] for idx in res])
+    res = handle_over100000(n)
+    # print(res)
     printBanCo(res)
-    res = searchBrFS(n)
-    printBanCo(res)
-    res = searchHeuristic(n)
-    printBanCo([[idx] for idx in res])
