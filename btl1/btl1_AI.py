@@ -20,6 +20,7 @@ def searchDFS(n):
                 Stack.append(nextState)
             if len(Stack) == n + 1:
                 break
+        print(Stack)
     print("--- %s seconds ---" % (time.time() - start_time))
     return Stack[1:]
 
@@ -100,8 +101,8 @@ if __name__ =="__main__":
     while n < 4:
         n = int(input('Moi nhap lai so chieu ban co nxn: '))
     res = searchDFS(n)
-    printBanCo(res)
-    res = searchBrFS(n)
-    printBanCo(res)
-    res = searchHeuristic(n)
-    printBanCo([[idx] for idx in res])
+    # printBanCo(res)
+    # res = searchBrFS(n)
+    # printBanCo(res)
+    # res = searchHeuristic(n)
+    # printBanCo([[idx] for idx in res])
