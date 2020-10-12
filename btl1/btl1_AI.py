@@ -131,6 +131,13 @@ def handle_over100000(n):
     print("--- %s seconds ---" % (time.time() - start_time))
     return [[idx - 1] for idx in res]
 
+def check(res):
+    for i in range(len(res)):
+        for j in range(len(res)):
+            if i != j and ((i + res[i]) == (j + res[j]) or (i - res[i]) == (j - res[j]) or res[i] == res[j]):
+                print('Hai vi tri tan cong lan nhau la: Hang thu: ' + str(i) + ', cot thu: ' + str(res[i]) + ' va hang thu: ' + str(j) + ', cot thu: ' + str(res[j]))
+                return
+    print('OK!')
 
 def printBanCo(arr):
     for i in range(len(arr)):
@@ -153,9 +160,15 @@ if __name__ =="__main__":
     # printBanCo(res)
     # res = searchBrFS(n)
     # printBanCo(res)
-    # res = searchHeuristic(n)
+    res = searchHeuristic(n)
     # print(res)
     # printBanCo([[idx] for idx in res])
-    res = handle_over100000(n)
+    # res = handle_over100000(n)
     # print(res)
-    printBanCo(res)
+    # printBanCo(res)
+    # arr = [0,2,1,3]
+    printBanCo([[idx] for idx in res])
+    check(res)
+    res[10], res[15] = res[15], res[10]
+    printBanCo([[idx] for idx in res])
+    check(res)
