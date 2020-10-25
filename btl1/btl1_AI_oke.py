@@ -1,5 +1,5 @@
 import time
-import random
+import random as rd
 from numpy import random
 import numpy as np
 from functools import reduce
@@ -108,7 +108,7 @@ def searchHeuristic(n):
     start_time = time.time()
     print('Dang su dung giai thuat Heuristic (Hill Climbing):')
     # Khoi tao trang thai ban dau
-    state = [random.randrange(n) for _ in range(n)]
+    state = [rd.randrange(n) for _ in range(n)]
     # arr_h mang gia tri dinh gia cho moi con hau
     arr_h = [cal_h(state, i, state[i]) for i in range(n)]
     #check_idx dung de phat hien dang o truong hop toi uu o dinh cuc bo, 2 vi tri cot co gia tri luong gia bang nhau se chuyen qua lai, tao vong lap vo tan
@@ -126,7 +126,7 @@ def searchHeuristic(n):
         selectCol = arr_min_h.index(min_h)
         #trong truong hop vi tri moi la vi tri cu ta se lay random de tao ra trang thai moi
         if state[selectRow] == selectCol or selectCol == check_idx[0]:
-            state[random.randrange(n)] = random.randrange(n)
+            state[rd.randrange(n)] = rd.randrange(n)
         # cap nhat lai mang check_idx, dong thoi cap nhat gia tri moi cho quan hau
         else:
             check_idx = check_idx[1:] + [selectCol]
