@@ -67,9 +67,11 @@ def searchBrFS(n):
                 state.append(i)
                 if len(state) == n:
                     print("--- %s seconds ---" % (time.time() - start_time))
-                    return res
+                    print(state)
+                    return state
                 else: Queue.append(state)
                 state = state[:-1]
+        print(Queue)
 
 def isNextStateBrFS(state, n):
     for i in range(len(state)):
@@ -161,15 +163,15 @@ if __name__ =="__main__":
     # printBanCo(res)
     # res = searchBrFS(n)
     # printBanCo(res)
-    res = searchHeuristic(n)
+    # res = searchHeuristic(n)
     # print(res)
     # printBanCo([[idx] for idx in res])
-    # res = handle_over100000(n)
-    # print(res)
+    res = handle_over100000(n)
+    print(res)
     # printBanCo(res)
     # arr = [0,2,1,3]
-    printBanCo([[idx] for idx in res])
-    check(res)
-    res[10], res[15] = res[15], res[10]
-    printBanCo([[idx] for idx in res])
-    check(res)
+    # printBanCo([[idx] for idx in res])
+    # check(res)
+    # res[10], res[15] = res[15], res[10]
+    # printBanCo([[idx] for idx in res])
+    # check(res)
