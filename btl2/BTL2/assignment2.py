@@ -45,32 +45,38 @@ def assign(file_input, file_output):
 
     # run algorithm
     while len(list_orders) != 0:
+        #tinh mean loi nhuan cua tat ca shipper hien co
+        mean = sum([i[1] for i in current_profit]) / num_shippers
+        print('mean-----------------------')
+        print(mean)
         #chon idx shiper co abs profit nho nhat
         abs_current_profit = current_profit.copy()
         for i in range(num_shippers):
-            abs_current_profit[i] = (abs_current_profit[i][0], abs(abs_current_profit[i][1]), abs_current_profit[i][2], abs_current_profit[i][3])
-        idx = np.sort(abs_current_profit, kind='heapsort', order='profit')[0][0]
-        print('-1-----------------------')
+            abs_current_profit[i] = (abs_current_profit[i][0], abs(abs_current_profit[i][1] - mean), abs_current_profit[i][2], abs_current_profit[i][3])
+        idx = np.sort(abs_current_profit, kind='heapsort', order='profit')[-1][0]
+        print('abs_current_profit-----------------------')
         print(abs_current_profit)
+        print('id shipper chose-----------------------')
+        print(np.sort(abs_current_profit, kind='heapsort', order='profit'))
         print(idx)
         dtype = [('id', int), ('abs_profit', float)]
-        values = [(list_orders[i,0], abs(current_profit[idx][1] + profit(list(current_profit[idx])[2:], list_orders[i]))) for i in range(len(list_orders))]
-        print('0-----------------------')
+        values = [(list_orders[i,0], abs(current_profit[idx][1] + profit(list(current_profit[idx])[2:], list_orders[i]) - mean)) for i in range(len(list_orders))]
+        print('values-----------------------')
         print(values)
         all_order_profit = np.array(values, dtype=dtype)
-        print('1-----------------------')
+        print('all_order_profit-----------------------')
         print(all_order_profit)
         #chon id don hang co chi phi den do dat gan bang 0
         all_order_profit = np.sort(all_order_profit, kind='heapsort', order='abs_profit')
-        print('2-----------------------')
+        print('all_order_profit-----------------------')
         print(all_order_profit)
-        print('3-----------------------')
+        print('all_order_profit-----------------------')
         print(all_order_profit[0][0])
         id_arr = list(list_orders[:,0])
-        print('4-----------------------')
+        print('id_arr-----------------------')
         print(id_arr)
         id_order = [i for i in range(len(id_arr)) if id_arr[i] == all_order_profit[0][0]][0]
-        print('5-----------------------')
+        print('id_order-----------------------')
         print(id_order)
         # print(current_profit[0][0])
         # print(current_profit[0][1])
@@ -80,13 +86,13 @@ def assign(file_input, file_output):
 
         #append new order append_order
         append_order[current_profit[idx][0]].append(all_order_profit[0][0])
-        print('6------------------')
+        print('append_order------------------')
         print(append_order)
 
         #update list_orders
         list_orders = np.delete(list_orders, [id_order * 5 + i for i in range(5)])
         list_orders = list_orders.reshape(len(list_orders) // 5, 5)
-        print('7------------------')
+        print('list_orders------------------')
         print(list_orders)
         # current_profit = np.sort(current_profit, kind='heapsort', order='profit')
         print('**********************************')
