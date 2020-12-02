@@ -199,8 +199,8 @@ def assign(file_input, file_output):
     LuuFile(file_output, ['He so toi uu: {0}'.format(str(opt_value))])
     LuuFile(file_output, append_order.values())
 
-for i in range(11):
-    input = 'input' + str(i) + '.txt'
-    output = 'output_Phuc' + str(i) + '.txt'
-    assign(input, output)
-# assign('input.txt', 'output1.txt')
+# for i in range(11):
+#     input = 'input' + str(i) + '.txt'
+#     output = 'output_Phuc' + str(i) + '.txt'
+#     assign(input, output)
+assign('input10.txt', 'output_Phuc10.txt')
