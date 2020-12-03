@@ -44,7 +44,6 @@ def assign(file_input, file_output):
     x0, y0 = arr[0]
     num_shippers = arr[1][1]
     num_orders = arr[1][0]
-    # print(num_shippers, num_orders)
     idx_orders = np.array(range(num_orders))[np.newaxis].T
     list_orders = np.hstack((idx_orders, np.array(arr[2:])))
 
@@ -56,7 +55,6 @@ def assign(file_input, file_output):
         dict_pairs[str((-1,order[0]))] = profit([-1,x0,y0,0,0],order)
     for pairs in tmp:
         dict_pairs[str((pairs[0][0], pairs[1][0]))] = profit(pairs[0],pairs[1])
-    # print(dict_pairs)
 
     #set chua 10 dinh nui
     set_num_orders_mountain = set()
@@ -64,7 +62,8 @@ def assign(file_input, file_output):
     #dict luu danh sach phan chia don hang cuoi cung
     dict_final = {}
 
-
+    #chi so lap, neu set_num_orders_mountain khong thay doi 10 lan thi dung
+    loop = 0
     while True:
         # dict chua danh sach don hang cua tat ca shipper
         append_order = {}
@@ -78,14 +77,12 @@ def assign(file_input, file_output):
             if len(set(array_random)) == num_shippers:
                 # print(len(set(array_random)))
                 break
-        # print(array_random)
 
         # xep cac don vao vao shiper tuong ung tu bo so ngau nhien
         idx_order = 0
         for id in array_random:
             append_order[id].append(idx_order)
             idx_order += 1
-        # print(append_order)
 
         # danh sach arr_profit
         arr_profit = []
@@ -94,7 +91,6 @@ def assign(file_input, file_output):
             for i in range(len(append_order[id]) - 1):
                 all_profit += dict_pairs[str((append_order[id][i], append_order[id][i + 1]))]
             arr_profit.append(all_profit)
-        # print(arr_profit)
 
         # tinh he so toi uu
         opt_value = sum([abs(x[0] - x[1]) for x in list(combinations(arr_profit, 2))])
@@ -102,7 +98,6 @@ def assign(file_input, file_output):
         if len(set_num_orders_mountain) == 0:
             set_num_orders_mountain.add(opt_value)
             dict_final = append_order
-            # print(dict_num_orders_mountain)
 
         while True:
             # tinh he so toi uu
@@ -177,14 +172,7 @@ def assign(file_input, file_output):
             # tinh he so toi uu tam thoi
             temp_opt_value = sum([abs(x[0] - x[1]) for x in list(combinations(temp_arr_profit, 2))])
 
-            # print('**********************************')
-            # print('He so toi uu buoc trc    He so toi uu buoc nay')
-            # print(opt_value, temp_opt_value)
-            # print('Neu He so toi uu buoc trc < He so toi uu buoc nay thi End Loop')
-
             if temp_opt_value > opt_value:
-                # print('Ket thuc')
-                # print('**********************************')
                 break
 
             # cap nhat gia tri opt_value moi
@@ -200,43 +188,59 @@ def assign(file_input, file_output):
             # cap nhat arr_profit
             arr_profit = temp_arr_profit
 
-            # print('Danh sach don hang buoc hien tai')
-            # print(append_order)
-            # print('**********************************')
-
 
         #kiem tra voi tap cac dinh nui
         # print(opt_value)
         if len(set_num_orders_mountain) == num_orders and all([opt_value >= x for x in (set_num_orders_mountain)]):
-            # print(opt_value, dict_num_orders_mountain.keys())
-            # print([opt_value >= x for x in (dict_num_orders_mountain.keys())])
-            break
+            if loop == num_orders:
+                break
+            else: loop += 1
         elif len(set_num_orders_mountain) == num_orders:
+            loop = 0
             set_num_orders_mountain.remove(max(set_num_orders_mountain))
+            if opt_value < min(set_num_orders_mountain):
+                dict_final = append_order
             set_num_orders_mountain.add(opt_value)
         else:
+            loop = 0
+            if opt_value < min(set_num_orders_mountain):
+                dict_final = append_order
             set_num_orders_mountain.add(opt_value)
-        if opt_value < min(set_num_orders_mountain):
-            dict_final = append_order
-
 
         # print(dict_num_orders_mountain)
 
-    print('He so toi uu tim duoc:')
-    print(min(set_num_orders_mountain))
-    print('Danh sach don hang cuoi cung')
-    print(dict_final)
-    print('**********************************')
-    print('Thoi gian chay: {0}'.format(str(time.time() - start_time)))
-    print('**********************************')
-    # Clear(file_output)
-    # LuuFile(file_output, ['Thoi gian chay: {0}'.format(str(time.time() - start_time))])
-    # LuuFile(file_output, ['He so toi uu: {0}'.format(str(dict_num_orders_mountain.keys())))])
-    # LuuFile(file_output, append_order.values())
-    # print(min(dict_num_orders_mountain.keys()))
+    # print('He so toi uu tim duoc:')
+    # print(min(set_num_orders_mountain))
+    # print('**********************************')
+    # print('Danh sach don hang cuoi cung')
+    # print(dict_final)
+    # print('Thoi gian chay: {0}'.format(str(time.time() - start_time)))
+
+    # #kiem tra lai ket qua
+    # # danh sach arr_profit
+    # print('Danh sach loi nhuan:')
+    # arr_profit = []
+    # for id in range(num_shippers):
+    #     all_profit = dict_pairs[str((-1, dict_final[id][0]))]
+    #     for i in range(len(dict_final[id]) - 1):
+    #         all_profit += dict_pairs[str((dict_final[id][i], dict_final[id][i + 1]))]
+    #     arr_profit.append(all_profit)
+    # print(arr_profit)
+    #
+    # # tinh he so toi uu
+    # print('He so toi uu khi kiem tra:')
+    # opt_value = sum([abs(x[0] - x[1]) for x in list(combinations(arr_profit, 2))])
+    # print(opt_value)
+
+    Clear(file_output)
+    LuuFile(file_output, ['Thoi gian chay: {0}'.format(str(time.time() - start_time))])
+    LuuFile(file_output, ['He so toi uu: {0}'.format(str(min(set_num_orders_mountain)))])
+    LuuFile(file_output, dict_final.values())
+
 for i in range(11):
     input = 'input' + str(i) + '.txt'
     output = 'output_Phuc' + str(i) + '.txt'
     assign(input, output)
-    print('Done testcase ' + str(i) + '!')
+    # print('Done testcase ' + str(i) + '!')
+    # print('**********************************')
 # assign('input10.txt', 'output_Phuc10.txt')
