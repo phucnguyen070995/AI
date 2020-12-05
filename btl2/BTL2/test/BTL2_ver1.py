@@ -39,6 +39,7 @@ def profit(order1, order2):
     return Tr - Tc
 
 def assign(file_input, file_output):
+    # random_loop = 0
     start_time = time.time()
     # read input
     arr = DocFile(file_input)
@@ -66,6 +67,7 @@ def assign(file_input, file_output):
     #chi so lap, neu set_num_orders_mountain khong thay doi 10 lan thi dung
     loop = 0
     while True:
+        # random_loop += 1
         # dict chua danh sach don hang cua tat ca shipper
         append_order = {}
         for id in range(num_shippers):
@@ -110,7 +112,7 @@ def assign(file_input, file_output):
 
             # tim mean cua tat ca profit
             mean = sum(arr_profit) / num_shippers
-            diff_mean = [abs(mean - arr_profit[i]) if len(append_order[i]) > 1 else 0 for i in range(num_shippers)]
+            diff_mean = [arr_profit[i] - mean if len(append_order[i]) > 1 else 0 for i in range(num_shippers)]
 
             # tim shipper co chenh lech profit voi mean profit lon nhat
             shipper_need_change1 = diff_mean.index((max(diff_mean)))
@@ -198,56 +200,57 @@ def assign(file_input, file_output):
         # print(opt_value)
         if time.time() - start_time >= 240:
             break
-        elif len(set_num_orders_mountain) == round(num_orders * 1.5) and all([opt_value >= x for x in (set_num_orders_mountain)]):
+        elif len(set_num_orders_mountain) == int(num_orders * 1.3) and all([opt_value >= x for x in (set_num_orders_mountain)]):
             if loop == num_orders * 3:
                 break
             else: loop += 1
-        elif len(set_num_orders_mountain) == num_orders:
-            loop = 0
-            set_num_orders_mountain.remove(max(set_num_orders_mountain))
-            if opt_value < min(set_num_orders_mountain):
-                dict_final = append_order
-            set_num_orders_mountain.add(opt_value)
+        elif len(set_num_orders_mountain) == int(num_orders * 1.3):
+            if opt_value < max(set_num_orders_mountain):
+                loop = 0
+                set_num_orders_mountain.remove(max(set_num_orders_mountain))
+                if opt_value < min(set_num_orders_mountain):
+                    dict_final = append_order
+                set_num_orders_mountain.add(opt_value)
         else:
             loop = 0
             if opt_value < min(set_num_orders_mountain):
                 dict_final = append_order
             set_num_orders_mountain.add(opt_value)
+        # print(set_num_orders_mountain)
 
-        # print(dict_num_orders_mountain)
+    # print('He so toi uu tim duoc:')
+    # print(min(set_num_orders_mountain))
+    # # print('**********************************')
+    # # print('Danh sach don hang cuoi cung')
+    # # print(dict_final)
+    # print('Thoi gian chay: {0}'.format(str(time.time() - start_time)))
+    # print('So lan random init: {0}'.format(str(random_loop)))
 
-    print('He so toi uu tim duoc:')
-    print(min(set_num_orders_mountain))
-    print('**********************************')
-    print('Danh sach don hang cuoi cung')
-    print(dict_final)
-    print('Thoi gian chay: {0}'.format(str(time.time() - start_time)))
-
-    #kiem tra lai ket qua
-    # danh sach arr_profit
-    print('Danh sach loi nhuan:')
-    arr_profit = []
-    for id in range(num_shippers):
-        all_profit = dict_pairs[str((-1, dict_final[id][0]))]
-        for i in range(len(dict_final[id]) - 1):
-            all_profit += dict_pairs[str((dict_final[id][i], dict_final[id][i + 1]))]
-        arr_profit.append(all_profit)
-    print(arr_profit)
-
-    # tinh he so toi uu
-    print('He so toi uu khi kiem tra:')
-    opt_value = sum([abs(x[0] - x[1]) for x in list(combinations(arr_profit, 2))])
-    print(opt_value)
+    # #kiem tra lai ket qua
+    # # danh sach arr_profit
+    # print('Danh sach loi nhuan:')
+    # arr_profit = []
+    # for id in range(num_shippers):
+    #     all_profit = dict_pairs[str((-1, dict_final[id][0]))]
+    #     for i in range(len(dict_final[id]) - 1):
+    #         all_profit += dict_pairs[str((dict_final[id][i], dict_final[id][i + 1]))]
+    #     arr_profit.append(all_profit)
+    # print(arr_profit)
+    #
+    # # tinh he so toi uu
+    # print('He so toi uu khi kiem tra:')
+    # opt_value = sum([abs(x[0] - x[1]) for x in list(combinations(arr_profit, 2))])
+    # print(opt_value)
 
     Clear(file_output)
+    LuuFile(file_output, dict_final.values())
     LuuFile(file_output, ['Thoi gian chay: {0}'.format(str(time.time() - start_time))])
     LuuFile(file_output, ['He so toi uu: {0}'.format(str(min(set_num_orders_mountain)))])
-    LuuFile(file_output, dict_final.values())
 
-for i in range(11):
-    input = 'input' + str(i) + '.txt'
-    output = 'output_Phuc' + str(i) + '.txt'
-    assign(input, output)
-    print('Done testcase ' + str(i) + '!')
-    print('**********************************')
-# assign('input10.txt', 'output_Phuc10.txt')
+# for i in range(11,13):
+#     input = 'input' + str(i) + '.txt'
+#     output = 'output_Phuc' + str(i) + '.txt'
+#     assign(input, output)
+#     # print('Done testcase ' + str(i) + '!')
+#     # print('**********************************')
+assign('input12.txt', 'output_Phuc12.txt')

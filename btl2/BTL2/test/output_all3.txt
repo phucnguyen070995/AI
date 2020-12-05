@@ -1,0 +1,55 @@
+He so toi uu tim duoc:
+0.22281784078728606
+Thoi gian chay: 52.07622408866882
+Done testcase 0!
+**********************************
+He so toi uu tim duoc:
+0.2315038984830835
+Thoi gian chay: 60.00090312957764
+Done testcase 1!
+**********************************
+He so toi uu tim duoc:
+0.429887252990909
+Thoi gian chay: 14.400968551635742
+Done testcase 2!
+**********************************
+He so toi uu tim duoc:
+0.17496863037229105
+Thoi gian chay: 60.0029354095459
+Done testcase 3!
+**********************************
+He so toi uu tim duoc:
+0.13230591190858831
+Thoi gian chay: 60.000893115997314
+Done testcase 4!
+**********************************
+He so toi uu tim duoc:
+0.02519626261528174
+Thoi gian chay: 6.32359766960144
+Done testcase 5!
+**********************************
+He so toi uu tim duoc:
+0.13734238793733766
+Thoi gian chay: 60.00414681434631
+Done testcase 6!
+**********************************
+He so toi uu tim duoc:
+0.015212939777711654
+Thoi gian chay: 4.375929117202759
+Done testcase 7!
+**********************************
+He so toi uu tim duoc:
+0.0036213698890605883
+Thoi gian chay: 60.00010704994202
+Done testcase 8!
+**********************************
+He so toi uu tim duoc:
+0.030595159201993738
+Thoi gian chay: 60.00051164627075
+Done testcase 9!
+**********************************
+He so toi uu tim duoc:
+6.7537887487646735
+Thoi gian chay: 60.000465869903564
+Done testcase 10!
+**********************************

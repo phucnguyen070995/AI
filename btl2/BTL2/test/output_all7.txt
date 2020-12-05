@@ -1,0 +1,12 @@
+He so toi uu tim duoc:
+1.2836057112596109
+Thoi gian chay: 240.00782752037048
+So lan random init: 9554
+Done testcase 11!
+**********************************
+He so toi uu tim duoc:
+22.02004499714434
+Thoi gian chay: 240.00421953201294
+So lan random init: 11286
+Done testcase 12!
+**********************************

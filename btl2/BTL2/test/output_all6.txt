@@ -1,0 +1,66 @@
+He so toi uu tim duoc:
+0.1511550599921634
+Thoi gian chay: 69.3626606464386
+So lan random init: 27137
+Done testcase 0!
+**********************************
+He so toi uu tim duoc:
+0.26973839434594993
+Thoi gian chay: 65.52867650985718
+So lan random init: 25033
+Done testcase 1!
+**********************************
+He so toi uu tim duoc:
+0.3924314780009013
+Thoi gian chay: 16.532018899917603
+So lan random init: 12585
+Done testcase 2!
+**********************************
+He so toi uu tim duoc:
+0.19171113913387217
+Thoi gian chay: 65.07262468338013
+So lan random init: 21120
+Done testcase 3!
+**********************************
+He so toi uu tim duoc:
+0.17494903558963415
+Thoi gian chay: 53.167685985565186
+So lan random init: 20651
+Done testcase 4!
+**********************************
+He so toi uu tim duoc:
+0.018296577586454532
+Thoi gian chay: 4.03991174697876
+So lan random init: 3471
+Done testcase 5!
+**********************************
+He so toi uu tim duoc:
+0.21689099407467438
+Thoi gian chay: 99.54155230522156
+So lan random init: 31339
+Done testcase 6!
+**********************************
+He so toi uu tim duoc:
+0.007243750083318901
+Thoi gian chay: 6.595347881317139
+So lan random init: 6013
+Done testcase 7!
+**********************************
+He so toi uu tim duoc:
+0.004652857157680046
+Thoi gian chay: 44.34936451911926
+So lan random init: 17423
+Done testcase 8!
+**********************************
+He so toi uu tim duoc:
+0.0197385774422969
+Thoi gian chay: 82.67338705062866
+So lan random init: 29389
+Done testcase 9!
+**********************************
+He so toi uu tim duoc:
+6.7537887487646735
+Thoi gian chay: 5.973124980926514
+So lan random init: 57240
+Done testcase 10!
+**********************************
