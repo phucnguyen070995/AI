@@ -200,11 +200,11 @@ def assign(file_input, file_output):
         # print(opt_value)
         if time.time() - start_time >= 240:
             break
-        elif len(set_num_orders_mountain) == int(num_orders * 1.3) and all([opt_value >= x for x in (set_num_orders_mountain)]):
+        elif len(set_num_orders_mountain) == int(num_orders * 1.5) and all([opt_value >= x for x in (set_num_orders_mountain)]):
             if loop == num_orders * 3:
                 break
             else: loop += 1
-        elif len(set_num_orders_mountain) == int(num_orders * 1.3):
+        elif len(set_num_orders_mountain) == int(num_orders * 1.5):
             if opt_value < max(set_num_orders_mountain):
                 loop = 0
                 set_num_orders_mountain.remove(max(set_num_orders_mountain))
@@ -247,10 +247,11 @@ def assign(file_input, file_output):
     LuuFile(file_output, ['Thoi gian chay: {0}'.format(str(time.time() - start_time))])
     LuuFile(file_output, ['He so toi uu: {0}'.format(str(min(set_num_orders_mountain)))])
 
-# for i in range(11,13):
-#     input = 'input' + str(i) + '.txt'
-#     output = 'output_Phuc' + str(i) + '.txt'
-#     assign(input, output)
-#     # print('Done testcase ' + str(i) + '!')
-#     # print('**********************************')
-assign('input12.txt', 'output_Phuc12.txt')
+so_luong_testcase = 12
+for i in range(so_luong_testcase + 1):
+    input = 'input' + str(i) + '.txt'
+    output = 'output_Phuc' + str(i) + '.txt'
+    assign(input, output)
+    # print('Done testcase ' + str(i) + '!')
+    # print('**********************************')
+# assign('input11.txt', 'output_Phuc11.txt')
