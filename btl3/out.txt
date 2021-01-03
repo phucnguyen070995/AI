@@ -1,0 +1,684 @@
+from simpleGreedy import nextMove
+from randomPlay import nextMove
+ ABCDEFGH
+1........
+2........
+3........
+4...WB...
+5...BW...
+6........
+7........
+8........
+Black = 2, White = 2
+START: Clock remaining: B=150.000000, W=150.000000
+ ABCDEFGH
+1........
+2........
+3...B....
+4...BB...
+5...BW...
+6........
+7........
+8........
+Black = 4, White = 1
+Clock remaining: W=150.000000, B=149.999382
+ ABCDEFGH
+1........
+2........
+3..WB....
+4...WB...
+5...BW...
+6........
+7........
+8........
+Black = 3, White = 3
+Clock remaining: B=149.999382, W=149.999607
+ ABCDEFGH
+1........
+2........
+3.BBB....
+4...WB...
+5...BW...
+6........
+7........
+8........
+Black = 5, White = 2
+Clock remaining: W=149.999607, B=149.998794
+ ABCDEFGH
+1........
+2........
+3.BBB....
+4...WB...
+5...WW...
+6...W....
+7........
+8........
+Black = 4, White = 4
+Clock remaining: B=149.998794, W=149.999241
+ ABCDEFGH
+1........
+2........
+3.BBB....
+4...BB...
+5...BW...
+6...B....
+7...B....
+8........
+Black = 8, White = 1
+Clock remaining: W=149.999241, B=149.998179
+ ABCDEFGH
+1........
+2........
+3.BBB....
+4...BB...
+5..WWW...
+6...B....
+7...B....
+8........
+Black = 7, White = 3
+Clock remaining: B=149.998179, W=149.998873
+ ABCDEFGH
+1........
+2........
+3.BBB....
+4.B.BB...
+5..BWW...
+6...B....
+7...B....
+8........
+Black = 9, White = 2
+Clock remaining: W=149.998873, B=149.997526
+ ABCDEFGH
+1........
+2........
+3.BBBW...
+4.B.BW...
+5..BWW...
+6...B....
+7...B....
+8........
+Black = 8, White = 4
+Clock remaining: B=149.997526, W=149.998523
+ ABCDEFGH
+1........
+2........
+3.BBBW...
+4.B.BB...
+5..BBBB..
+6...B....
+7...B....
+8........
+Black = 12, White = 1
+Clock remaining: W=149.998523, B=149.996915
+ ABCDEFGH
+1........
+2........
+3WWWWW...
+4.B.BB...
+5..BBBB..
+6...B....
+7...B....
+8........
+Black = 9, White = 5
+Clock remaining: B=149.996915, W=149.998172
+ ABCDEFGH
+1........
+2.B......
+3WBBWW...
+4.B.BB...
+5..BBBB..
+6...B....
+7...B....
+8........
+Black = 12, White = 3
+Clock remaining: W=149.998172, B=149.996303
+ ABCDEFGH
+1........
+2.B......
+3WBBWW...
+4.W.BB...
+5..WBBB..
+6...W....
+7...BW...
+8........
+Black = 9, White = 7
+Clock remaining: B=149.996303, W=149.997851
+ ABCDEFGH
+1........
+2.B......
+3WBBBBB..
+4.W.BB...
+5..WBBB..
+6...W....
+7...BW...
+8........
+Black = 12, White = 5
+Clock remaining: W=149.997851, B=149.995449
+ ABCDEFGH
+1........
+2.B......
+3WBBBBB..
+4.W.BB...
+5..WBBB..
+6...W....
+7...WW...
+8...W....
+Black = 11, White = 7
+Clock remaining: B=149.995449, W=149.997538
+ ABCDEFGH
+1........
+2.B......
+3WBBBBB..
+4.B.BB...
+5.BBBBB..
+6...W....
+7...WW...
+8...W....
+Black = 14, White = 5
+Clock remaining: W=149.997538, B=149.994945
+ ABCDEFGH
+1..W.....
+2.W......
+3WBBBBB..
+4.B.BB...
+5.BBBBB..
+6...W....
+7...WW...
+8...W....
+Black = 13, White = 7
+Clock remaining: B=149.994945, W=149.997221
+ ABCDEFGH
+1..W.....
+2.W......
+3WBBBBB..
+4.B.BB...
+5.BBBBB..
+6...B....
+7...WB...
+8...W.B..
+Black = 16, White = 5
+Clock remaining: W=149.997221, B=149.994232
+ ABCDEFGH
+1..W.....
+2.W......
+3WBBBBB..
+4.B.BB...
+5.BBBBB..
+6...B....
+7...WWW..
+8...W.B..
+Black = 15, White = 7
+Clock remaining: B=149.994232, W=149.996925
+ ABCDEFGH
+1B.W.....
+2.B......
+3WBBBBB..
+4.B.BB...
+5.BBBBB..
+6...B....
+7...WWW..
+8...W.B..
+Black = 17, White = 6
+Clock remaining: W=149.996925, B=149.993790
+ ABCDEFGH
+1B.W.....
+2.B.W....
+3WBBWBB..
+4.B.WB...
+5.BBWBB..
+6...W....
+7...WWW..
+8...W.B..
+Black = 13, White = 11
+Clock remaining: B=149.993790, W=149.996532
+ ABCDEFGH
+1B.W.B...
+2.B.B....
+3WBBWBB..
+4.B.WB...
+5.BBWBB..
+6...W....
+7...WWW..
+8...W.B..
+Black = 15, White = 10
+Clock remaining: W=149.996532, B=149.993036
+ ABCDEFGH
+1B.W.B...
+2.B.B....
+3WBBWBB..
+4.B.WW...
+5.BBWBW..
+6...W..W.
+7...WWW..
+8...W.B..
+Black = 13, White = 13
+Clock remaining: B=149.993036, W=149.996279
+ ABCDEFGH
+1B.W.B...
+2.B.B....
+3WBBWBB..
+4.B.WB...
+5.BBBBW..
+6..BW..W.
+7...WWW..
+8...W.B..
+Black = 16, White = 11
+Clock remaining: W=149.996279, B=149.992521
+ ABCDEFGH
+1B.W.B...
+2.B.W....
+3WBBWWB..
+4.B.WWW..
+5.BBBWW..
+6..BW..W.
+7...WWW..
+8...W.B..
+Black = 12, White = 16
+Clock remaining: B=149.992521, W=149.996035
+ ABCDEFGH
+1B.W.B...
+2.B.W....
+3WBBWWB..
+4.B.BWB..
+5.BBBBB..
+6..BW.BW.
+7...WWB..
+8...W.B..
+Black = 18, White = 11
+Clock remaining: W=149.996035, B=149.991933
+ ABCDEFGH
+1B.W.B...
+2.B.W....
+3WBBWWB..
+4.B.BWB..
+5.BBBBB..
+6..BW.BW.
+7...WWWW.
+8...W.B..
+Black = 17, White = 13
+Clock remaining: B=149.991933, W=149.995823
+ ABCDEFGH
+1B.WBB...
+2.B.B....
+3WBBBWB..
+4.B.BWB..
+5.BBBBB..
+6..BW.BW.
+7...WWWW.
+8...W.B..
+Black = 20, White = 11
+Clock remaining: W=149.995823, B=149.991159
+ ABCDEFGH
+1B.WWWW..
+2.B.B....
+3WBBBWB..
+4.B.BWB..
+5.BBBBB..
+6..BW.BW.
+7...WWWW.
+8...W.B..
+Black = 18, White = 14
+Clock remaining: B=149.991159, W=149.995615
+ ABCDEFGH
+1B.WWWW..
+2.B.BB...
+3WBBBBB..
+4.B.BBB..
+5.BBBBB..
+6..BW.BW.
+7...WWWW.
+8...W.B..
+Black = 21, White = 12
+Clock remaining: W=149.995615, B=149.990516
+ ABCDEFGH
+1B.WWWW..
+2.B.BB...
+3WBBBBB..
+4.B.BBB..
+5.BBBBB..
+6.WWW.BW.
+7...WWWW.
+8...W.B..
+Black = 20, White = 14
+Clock remaining: B=149.990516, W=149.995413
+ ABCDEFGH
+1B.WWWW..
+2.B.BB...
+3WBBBBB..
+4.B.BBB..
+5.BBBBB..
+6.WWW.BBB
+7...WWWB.
+8...W.B..
+Black = 23, White = 12
+Clock remaining: W=149.995413, B=149.989943
+ ABCDEFGH
+1B.WWWW..
+2.B.BW...
+3WBBBBW..
+4.B.BBBW.
+5.BBBBB..
+6.WWW.BBB
+7...WWWB.
+8...W.B..
+Black = 21, White = 15
+Clock remaining: B=149.989943, W=149.995226
+ ABCDEFGH
+1B.WWWW..
+2.B.BW...
+3WBBBBW..
+4.B.BBBW.
+5.BBBBB..
+6.WBB.BBB
+7..BBBBB.
+8...W.B..
+Black = 27, White = 10
+Clock remaining: W=149.995226, B=149.989260
+ ABCDEFGH
+1B.WWWW..
+2.B.WW...
+3WBWBBW..
+4.W.BBBW.
+5WBBBBB..
+6.WBB.BBB
+7..BBBBB.
+8...W.B..
+Black = 24, White = 14
+Clock remaining: B=149.989260, W=149.995042
+ ABCDEFGH
+1B.WWWW..
+2.B.WWB..
+3WBWBBB..
+4.W.BBBW.
+5WBBBBB..
+6.WBB.BBB
+7..BBBBB.
+8...W.B..
+Black = 26, White = 13
+Clock remaining: W=149.995042, B=149.988641
+ ABCDEFGH
+1B.WWWW..
+2.B.WWB..
+3WBWBWB..
+4.W.BWBW.
+5WBBBWW..
+6.WWWWBBB
+7..BBBBB.
+8...W.B..
+Black = 20, White = 20
+Clock remaining: B=149.988641, W=149.994872
+ ABCDEFGH
+1B.WWWW..
+2.B.WWB..
+3WBWBWB..
+4.W.BWBW.
+5WBBBWW..
+6BBBBBBBB
+7..BBBBB.
+8...W.B..
+Black = 25, White = 16
+Clock remaining: W=149.994872, B=149.988038
+ ABCDEFGH
+1B.WWWW..
+2.B.WWB..
+3WBWBWB..
+4.W.BWBW.
+5WBBBWW..
+6BBBBWBBB
+7..BBWBB.
+8...WWB..
+Black = 23, White = 19
+Clock remaining: B=149.988038, W=149.994744
+ ABCDEFGH
+1B.WWWW..
+2.B.WWB..
+3WBWBWB.B
+4.W.BWBB.
+5WBBBWB..
+6BBBBBBBB
+7..BBWBB.
+8...WWB..
+Black = 27, White = 16
+Clock remaining: W=149.994744, B=149.987491
+ ABCDEFGH
+1B.WWWWW.
+2.B.WWW..
+3WBWBWB.B
+4.W.BWBB.
+5WBBBWB..
+6BBBBBBBB
+7..BBWBB.
+8...WWB..
+Black = 26, White = 18
+Clock remaining: B=149.987491, W=149.994627
+ ABCDEFGH
+1B.WWWWW.
+2.B.WWW..
+3WBWBWB.B
+4.W.BWBB.
+5WBBBWB..
+6BBBBBBBB
+7..BBWBB.
+8..BBBB..
+Black = 29, White = 16
+Clock remaining: W=149.994627, B=149.987194
+ ABCDEFGH
+1BWWWWWW.
+2.W.WWW..
+3WWWBWB.B
+4.W.BWBB.
+5WBBBWB..
+6BBBBBBBB
+7..BBWBB.
+8..BBBB..
+Black = 27, White = 19
+Clock remaining: B=149.987194, W=149.994473
+ ABCDEFGH
+1BBBBBBBB
+2.W.WWW..
+3WWWBWB.B
+4.W.BWBB.
+5WBBBWB..
+6BBBBBBBB
+7..BBWBB.
+8..BBBB..
+Black = 34, White = 13
+Clock remaining: W=149.994473, B=149.986839
+ ABCDEFGH
+1BBBBBBBB
+2.W.WWWW.
+3WWWBWW.B
+4.W.BWBB.
+5WBBBWB..
+6BBBBBBBB
+7..BBWBB.
+8..BBBB..
+Black = 33, White = 15
+Clock remaining: B=149.986839, W=149.994344
+ ABCDEFGH
+1BBBBBBBB
+2.W.WWBB.
+3WWWBBBBB
+4.W.BWBB.
+5WBBBWB..
+6BBBBBBBB
+7..BBWBB.
+8..BBBB..
+Black = 38, White = 11
+Clock remaining: W=149.994344, B=149.986519
+ ABCDEFGH
+1BBBBBBBB
+2.W.WWBB.
+3WWWBBWBB
+4.W.BWBW.
+5WBBBWB.W
+6BBBBBBBB
+7..BBWBB.
+8..BBBB..
+Black = 36, White = 14
+Clock remaining: B=149.986519, W=149.994252
+ ABCDEFGH
+1BBBBBBBB
+2.WBBBBB.
+3WWWBBWBB
+4.W.BWBW.
+5WBBBWB.W
+6BBBBBBBB
+7..BBWBB.
+8..BBBB..
+Black = 39, White = 12
+Clock remaining: W=149.994252, B=149.986182
+ ABCDEFGH
+1BBBBBBBB
+2.WBBBBB.
+3WWWBBWBB
+4.W.BWBW.
+5WBBBWW.W
+6BBBBBBWW
+7..BBWWWW
+8..BBBB..
+Black = 34, White = 18
+Clock remaining: B=149.986182, W=149.994162
+ ABCDEFGH
+1BBBBBBBB
+2.WBBBBB.
+3WWWBBWBB
+4.W.BWBB.
+5WBBBBBBW
+6BBBBBBWW
+7..BBWWWW
+8..BBBB..
+Black = 38, White = 15
+Clock remaining: W=149.994162, B=149.985665
+ ABCDEFGH
+1BBBBBBBB
+2.WWWWWWW
+3WWWBBWBB
+4.W.BWBB.
+5WBBBBBBW
+6BBBBBBWW
+7..BBWWWW
+8..BBBB..
+Black = 33, White = 21
+Clock remaining: B=149.985665, W=149.994064
+ ABCDEFGH
+1BBBBBBBB
+2.WBWWWWW
+3WBWBBWBB
+4BW.BWBB.
+5BBBBBBBW
+6BBBBBBWW
+7..BBWWWW
+8..BBBB..
+Black = 37, White = 18
+Clock remaining: W=149.994064, B=149.985348
+ ABCDEFGH
+1BBBBBBBB
+2.WBWWWWW
+3WBWBBWWW
+4BW.BWWWW
+5BBBBBBWW
+6BBBBBWWW
+7..BBWWWW
+8..BBBB..
+Black = 31, White = 25
+Clock remaining: B=149.985348, W=149.993994
+ ABCDEFGH
+1BBBBBBBB
+2.WBWWWWB
+3WBWBBWWB
+4BW.BWWWB
+5BBBBBBWB
+6BBBBBBWB
+7..BBWWBB
+8..BBBB.B
+Black = 40, White = 17
+Clock remaining: W=149.993994, B=149.985052
+ ABCDEFGH
+1BBBBBBBB
+2.WBWWWWB
+3WBWBBWWB
+4BW.BWWWB
+5BBBBBBWB
+6BBBBBBWB
+7..BBWWWB
+8..BBBBWB
+Black = 39, White = 19
+Clock remaining: B=149.985052, W=149.993940
+ ABCDEFGH
+1BBBBBBBB
+2BBBWWWWB
+3BBWBBWWB
+4BW.BWWWB
+5BBBBBBWB
+6BBBBBBWB
+7..BBWWWB
+8..BBBBWB
+Black = 42, White = 17
+Clock remaining: W=149.993940, B=149.984881
+ ABCDEFGH
+1BBBBBBBB
+2BBBWWWWB
+3BBWBBWWB
+4BW.BWWWB
+5BBBBWBWB
+6BBBWBBWB
+7..WBWWWB
+8.WWWWWWB
+Black = 35, White = 25
+Clock remaining: B=149.984881, W=149.993892
+ ABCDEFGH
+1BBBBBBBB
+2BBBWWWWB
+3BBWBBWWB
+4BW.BWWWB
+5BBBBWBWB
+6BBBWBBWB
+7..WBWWWB
+8BBBBBBBB
+Black = 42, White = 19
+Clock remaining: W=149.993892, B=149.984659
+ ABCDEFGH
+1BBBBBBBB
+2BBBWWWWB
+3BBWWBWWB
+4BWWWWWWB
+5BBWWWBWB
+6BBWWWBWB
+7..WBWWWB
+8BBBBBBBB
+Black = 36, White = 26
+Clock remaining: B=149.984659, W=149.993853
+ ABCDEFGH
+1BBBBBBBB
+2BBBWWWBB
+3BBWWBBWB
+4BWWWBWWB
+5BBWBWBWB
+6BBBWWBWB
+7.BBBWWWB
+8BBBBBBBB
+Black = 43, White = 20
+Clock remaining: W=149.993853, B=149.984559
+ ABCDEFGH
+1BBBBBBBB
+2BBBWWWBB
+3BBWWBBWB
+4BWWWBWWB
+5BBWBWBWB
+6BWBWWBWB
+7WWWWWWWB
+8BBBBBBBB
+Black = 39, White = 25
+Clock remaining: B=149.984559, W=149.993821
+ ABCDEFGH
+1BBBBBBBB
+2BBBWWWBB
+3BBWWBBWB
+4BWWWBWWB
+5BBWBWBWB
+6BWBWWBWB
+7WWWWWWWB
+8BBBBBBBB
+Black = 39, White = 25
+simpleGreedy Wins randomPlay Loses (39 to 25)
